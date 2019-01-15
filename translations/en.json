@@ -48,6 +48,8 @@
     "no-more-participants-available": "You can't add anymore participants",
     "join-group-chat-description": "{{username}} invited you to join the group {{group-name}}",
     "join-group-chat": "Join chat",
+    "create-group-chat": "Create group chat",
+    "group-chat-members-count": "{{selected}}/{{max}} members",
     "group-chat-created": "*{{member}}* created the group *{{name}}*",
     "group-chat-admin": "Admin",
     "group-chat-name-changed": "*{{member}}* changed the group's name to *{{name}}*",
