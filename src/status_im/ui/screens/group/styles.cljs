@@ -34,8 +34,11 @@
   {:flex-direction    :row
    :position          :absolute
    :bottom            0
-   :margin-horizontal 12
-   :margin-vertical   15})
+   :border-top-width  1
+   :border-top-color  colors/gray-light
+   :background-color  colors/white
+   :padding-horizontal 12
+   :padding-vertical   15})
 
 (def toolbar-header-container
   {:align-items :center})

@@ -107,16 +107,9 @@
     (i18n/label :t/group-chat-no-contacts)]
    [buttons/secondary-button {:on-press handle-invite-friends-pressed} (i18n/label :t/invite-friends)]])
 
-(defn number-of-participants-disclaimer [number-of-participants-available]
-  [react/view {:style styles/number-of-participants-disclaimer}
-   [react/text (if (> number-of-participants-available
-                      0)
-                 (i18n/label-pluralize number-of-participants-available :t/available-participants)
-                 (i18n/label :t/no-more-participants-available))]])
-
 (views/defview bottom-container [{:keys [on-press disabled label]}]
-  [react/view styles/bottom-container
-   [react/view components.styles/flex]
+  [react/view {:style styles/bottom-container}
+   [react/view {:style components.styles/flex}]
    [components.common/bottom-button
     {:forward?            true
      :accessibility-label :next-button
@@ -156,14 +149,15 @@
                     {:selected (inc (count contacts))
                      :max      constants/max-group-chat-participants})]
        [group-name-view]
-       [list/list-with-label {:flex 1}
-        (i18n/label :t/members-title)
-        [list/flat-list {:data                         contacts
-                         :key-fn                       :address
-                         :render-fn                    render-contact
-                         :bounces                      false
-                         :keyboard-should-persist-taps :always
-                         :enable-empty-sections        true}]]
+       [react/scroll-view
+        [list/list-with-label {:flex 1}
+         (i18n/label :t/members-title)
+         [list/flat-list {:data                         contacts
+                          :key-fn                       :address
+                          :render-fn                    render-contact
+                          :bounces                      false
+                          :keyboard-should-persist-taps :always
+                          :enable-empty-sections        true}]]]
        [bottom-container {:on-press #(re-frame/dispatch [:group-chats.ui/create-pressed group-name])
                           :disabled (string/blank? group-name)
                           :label (i18n/label :t/create-group-chat)}]])))
@@ -179,9 +173,12 @@
        [toolbar
         name
         (i18n/label :t/group-chat-members-count
-                    {:selected current-participants-count
+                    {:selected (+ current-participants-count selected-contacts-count)
                      :max      constants/max-group-chat-participants})]
-       [number-of-participants-disclaimer (- constants/max-group-chat-participants current-participants-count)]
        (when (seq contacts)
          [toggle-list contacts (partial group-toggle-participant (< (+ current-participants-count
-                                                                       selected-contacts-count) constants/max-group-chat-participants))])])))
+                                                                       selected-contacts-count) constants/max-group-chat-participants))])
+       [bottom-container {:on-press
+                          #(re-frame/dispatch [:group-chats.ui/add-members-pressed])
+                          :disabled (zero? selected-contacts-count)
+                          :label (i18n/label :t/add)}]])))
