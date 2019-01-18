@@ -44,7 +44,7 @@
    [react/touchable-highlight {:accessibility-label :new-chat-button
                                :on-press            #(re-frame/dispatch [:navigate-to :new])}
     [react/view styles/action-button
-     [icons/icon :icons/add {:color :white}]]]])
+     [icons/icon :main-icons/add {:color :white}]]]])
 
 (defn home-list-item [[home-item-id home-item]]
   (let [delete-action   (if (:chat-id home-item)
