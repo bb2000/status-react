@@ -27,7 +27,7 @@
      [action-button/action-button
       {:label               (i18n/label :t/start-group-chat)
        :accessibility-label :start-group-chat-button
-       :icon                :icons/contacts
+       :icon                :main-icons/group-chat
        :icon-opts           {:color colors/blue}
        :on-press            #(re-frame/dispatch [:contact.ui/start-group-chat-pressed])}])
    (when config/group-chats-enabled?
@@ -49,7 +49,7 @@
    [action-button/action-button
     {:label               (i18n/label :t/invite-friends)
      :accessibility-label :invite-friends-button
-     :icon                :icons/share
+     :icon                :main-icons/share
      :icon-opts           {:color colors/blue}
      :on-press            #(list-selection/open-share {:message (i18n/label :t/get-status-at)})}]
    [action-button/action-separator]
