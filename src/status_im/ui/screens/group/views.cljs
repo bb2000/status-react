@@ -126,8 +126,8 @@
      [toolbar
       (i18n/label :t/new-group-chat)
       (i18n/label :t/group-chat-members-count
-                  {:selected (inc selected-contacts-count)
-                   :max      constants/max-group-chat-participants})]
+                  {:selected selected-contacts-count
+                   :max      (dec constants/max-group-chat-participants)})]
      (if (seq contacts)
        [toggle-list contacts (partial group-toggle-contact (< selected-contacts-count (dec constants/max-group-chat-participants)))]
        [no-contacts])
@@ -146,8 +146,8 @@
        [toolbar
         (i18n/label :t/new-group-chat)
         (i18n/label :t/group-chat-members-count
-                    {:selected (inc (count contacts))
-                     :max      constants/max-group-chat-participants})]
+                    {:selected (count contacts)
+                     :max      (dec constants/max-group-chat-participants)})]
        [group-name-view]
        [react/scroll-view
         [list/list-with-label {:flex 1}
@@ -173,8 +173,8 @@
        [toolbar
         name
         (i18n/label :t/group-chat-members-count
-                    {:selected (+ current-participants-count selected-contacts-count)
-                     :max      constants/max-group-chat-participants})]
+                    {:selected (dec (+ current-participants-count selected-contacts-count))
+                     :max      (dec constants/max-group-chat-participants)})]
        (when (seq contacts)
          [toggle-list contacts (partial group-toggle-participant (< (+ current-participants-count
                                                                        selected-contacts-count) constants/max-group-chat-participants))])
