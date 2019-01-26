@@ -23,12 +23,13 @@ else
   PLATFORM=$1
 fi
 
+load_nvm_if_available
+
 if ! program_exists node || ! program_exists yarn; then
   echo -e "${YELLOW}********************************************************************************************"
 
   nvmrc="./.nvmrc"
-  if [ -e "$nvmrc" ]; then
-    node_version=$(node -v)
+  if [ -e "$nvmrc" ] && nvm_installed; then
     version_alias=$(cat "$nvmrc")
     echo -e "Please run 'nvm use $version_alias' in the terminal and try again."
   else
@@ -51,7 +52,7 @@ fi
 
 if [[ $PLATFORM == 'android' ]]; then
   _localPropertiesPath=./android/local.properties
-  if ! grep -Fq "ndk.dir" $_localPropertiesPath; then
+  if [ ! -f $_localPropertiesPath ] || ! grep -Fq "ndk.dir" $_localPropertiesPath; then
     if [ -z $ANDROID_NDK_HOME ]; then
       echo -e "${GREEN}NDK directory not configured, please run 'make setup' or add the line to ${_localPropertiesPath}!${NC}"
       exit 1
@@ -59,4 +60,8 @@ if [[ $PLATFORM == 'android' ]]; then
   fi
 fi
 
-echo -e "${GREEN}Finished!${NC}"
+if [[ $PLATFORM == 'setup' ]]; then
+  echo -e "${YELLOW}Finished! Please close your terminal, and reopen a new one before building Status.${NC}"
+else
+  echo -e "${GREEN}Finished!${NC}"
+fi

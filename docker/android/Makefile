@@ -40,7 +40,7 @@ $(ANDROID_SDK_ARCHIVE):
 test: ## Run build inside the image as a test
 	docker run -u $(shell id -u):$(shell id -g) \
 		--name android-test --rm \
-        --tmpfs /var/tmp:rw,size=1G,exec,mode=1777 \
+		--tmpfs /var/tmp:rw,size=1G,exec,mode=1777 \
 		-v $(GIT_ROOT):/repo:rw \
 		-w /repo $(IMAGE_NAME) \
 		docker/android/build.sh

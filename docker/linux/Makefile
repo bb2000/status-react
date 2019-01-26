@@ -19,7 +19,7 @@ build: $(QT_ARCHIVE)
 		--build-arg="RNATIVE_VERSION=$(call __toolversion, react_native_desktop)" \
 		--build-arg="CMAKE_VERSION=$(call __toolversion, cmake)" \
 		--label="commit=$(GIT_COMMIT)" \
-		-t $(IMAGE_NAME) .; \
+		-t $(IMAGE_NAME) .
 
 $(QT_ARCHIVE):
 	wget $(QT_URL)/$(call __major_version__, $(QT_VERSION))/$(QT_VERSION)/$(QT_ARCHIVE)

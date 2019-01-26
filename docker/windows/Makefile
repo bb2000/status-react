@@ -13,7 +13,7 @@ build:
 		--build-arg="CONAN_VERSION=$(call __toolversion, conan)" \
 		--build-arg="CMAKE_VERSION=$(call __toolversion, cmake)" \
 		--label="commit=$(GIT_COMMIT)" \
-		-t $(IMAGE_NAME) .; \
+		-t $(IMAGE_NAME) .
 
 push: build
 	docker push $(IMAGE_NAME)
