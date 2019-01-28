@@ -52,12 +52,6 @@
       js/JSON.parse
       (js->clj :keywordize-keys true)))
 
-(defn joined? [public-key {:keys [members-joined]}]
-  (contains? members-joined public-key))
-
-(defn invited? [my-public-key {:keys [contacts]}]
-  (contains? contacts my-public-key))
-
 (defn extract-creator
   "Takes a chat as an input, returns the creator"
   [{:keys [membership-updates]}]
@@ -66,6 +60,13 @@
                  (some #(= "chat-created" (:type %)) events)))
        first
        :from))
+
+(defn joined? [public-key {:keys [members-joined] :as chat}]
+  (or (contains? members-joined public-key)
+      (= public-key (extract-creator chat))))
+
+(defn invited? [my-public-key {:keys [contacts]}]
+  (contains? contacts my-public-key))
 
 (defn signature-material
   "Transform an update into a signable string"
