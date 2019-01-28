@@ -20,7 +20,7 @@
      [react/text {:style           styles/choose-authentication-method-row-text
                   :number-of-lines 1}
       title]]
-    [vector-icons/icon :icons/forward {:color colors/gray}]]])
+    [vector-icons/icon :main-icons/next {:color colors/gray}]]])
 
 (defn hardwallet-authentication-method []
   [react/view styles/container
@@ -42,5 +42,5 @@
                                  :icon     :icons/hardwallet
                                  :on-press #(re-frame/dispatch [:hardwallet.ui/status-hardwallet-option-pressed])}]
      [authentication-method-row {:title    (i18n/label :t/password)
-                                 :icon     :icons/password
+                                 :icon     :main-icons/password
                                  :on-press #(re-frame/dispatch [:hardwallet.ui/password-option-pressed])}]]]])

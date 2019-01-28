@@ -82,5 +82,5 @@
   [react/view {:style {:position :absolute :left 32 :top 32 :z-index 1000}}
    [react/touchable-highlight {:on-press on-press}
     [react/view {:style {:flex-direction :row :align-items :center}}
-     [icons/icon :icons/back {:color :white}]
+     [icons/icon :main-icons/back {:color :white}]
      [react/text {:style {:margin-left 16 :font-size 15 :color :white}} "Back"]]]])

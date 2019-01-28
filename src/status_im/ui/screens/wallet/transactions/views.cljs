@@ -44,10 +44,10 @@
 
 (defn- transaction-type->icon [k]
   (case k
-    :inbound (transaction-icon :icons/arrow-left (colors/alpha colors/green 0.2) colors/green)
-    :outbound (transaction-icon :icons/arrow-right (colors/alpha colors/blue 0.1) colors/blue)
+    :inbound (transaction-icon :main-icons/arrow-left (colors/alpha colors/green 0.2) colors/green)
+    :outbound (transaction-icon :main-icons/arrow-right (colors/alpha colors/blue 0.1) colors/blue)
     :failed (transaction-icon :icons/exclamation-mark colors/gray-light colors/red)
-    (:postponed :pending) (transaction-icon :icons/arrow-right colors/gray-light colors/gray)
+    (:postponed :pending) (transaction-icon :main-icons/arrow-right colors/gray-light colors/gray)
     (throw (str "Unknown transaction type: " k))))
 
 (defn render-transaction [{:keys [hash from-contact to-contact to from type value time-formatted symbol]}
@@ -88,7 +88,7 @@
                       :accessibility-label address-accessibility-label}
           address]]]
        (when-not hide-details?
-         [list/item-icon {:icon      :icons/forward
+         [list/item-icon {:icon      :main-icons/next
                           :style     {:margin-top 10}
                           :icon-opts (merge styles/forward
                                             {:accessibility-label :show-transaction-button})}])]]]))

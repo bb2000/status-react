@@ -76,7 +76,7 @@
     [react/view styles/name-view
      (when public-group?
        [react/view styles/public-group-icon-container
-        [vector-icons/icon :icons/public-chat {:color colors/gray}]])
+        [vector-icons/icon :tiny-icons/tiny-public {:color colors/gray}]])
      (when private-group?
        [react/view styles/private-group-icon-container
         [vector-icons/icon :tiny-icons/tiny-group {:color colors/gray}]])

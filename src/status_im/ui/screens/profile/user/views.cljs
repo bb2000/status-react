@@ -227,7 +227,7 @@
         [react/view {:style styles/advanced-button-row}
          [react/text {:style styles/advanced-button-label}
           (i18n/label :t/wallet-advanced)]
-         [icons/icon (if advanced? :icons/up :icons/down) {:color colors/blue}]]]]]
+         [icons/icon (if advanced? :icons/up :main-icons/dropdown) {:color colors/blue}]]]]]
      (when advanced?
        [advanced-settings params on-show])]))
 
