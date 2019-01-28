@@ -12,7 +12,7 @@ import java.lang.ref.WeakReference;
 
 /**
  * StatusService has nothing to do with Android services anymore.
- * The name "StatusService" is kep to keep backward compatibility with status-go.
+ * The name "StatusService" is kept to keep backward compatibility with status-go.
  * Hopefully, it will be replaced when GoMobile
  */
 public class StatusService {
