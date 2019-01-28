@@ -4,6 +4,7 @@
             [clojure.string :as string]
             [re-frame.core :as re-frame]
             [status-im.i18n :as i18n]
+            [status-im.ui.screens.main-tabs.styles :as main-tabs.styles]
             [status-im.ui.components.styles :as components.styles]
             [status-im.constants :as constants]
             [status-im.utils.platform :as utils.platform]
@@ -108,14 +109,15 @@
    [buttons/secondary-button {:on-press handle-invite-friends-pressed} (i18n/label :t/invite-friends)]])
 
 (views/defview bottom-container [{:keys [on-press disabled label]}]
-  [react/view {:style styles/bottom-container}
+  [react/view {:style main-tabs.styles/tabs-container}
    [react/view {:style components.styles/flex}]
-   [components.common/bottom-button
-    {:forward?            true
-     :accessibility-label :next-button
-     :label               label
-     :disabled?           disabled
-     :on-press            on-press}]])
+   [react/view {:style styles/bottom-container}
+    [components.common/bottom-button
+     {:forward?            true
+      :accessibility-label :next-button
+      :label               label
+      :disabled?           disabled
+      :on-press            on-press}]]])
 
 ;; Start group chat
 (views/defview contact-toggle-list []

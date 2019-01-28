@@ -31,13 +31,7 @@
    :margin-horizontal 17})
 
 (def bottom-container
-  {:flex-direction    :row
-   :position          :absolute
-   :bottom            0
-   :border-top-width  1
-   :border-top-color  colors/gray-light
-   :background-color  colors/white
-   :padding-horizontal 12
+  {:padding-horizontal 12
    :padding-vertical   15})
 
 (def toolbar-header-container
