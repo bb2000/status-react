@@ -340,7 +340,7 @@ class StatusModule extends ReactContextBaseJavaModule implements LifecycleEventL
     public void startNode(final String config) {
         Log.d(TAG, "startNode");
         if (!checkAvailability()) {
-            Log.e(TAG, "[startNode] Activity doesn't exists, cannot start node");
+            Log.e(TAG, "[startNode] Activity doesn't exist, cannot start node");
             return;
         }
 
