@@ -42,7 +42,7 @@
     [react/view {:flex 1
                  :background-color colors/white}
      [status-bar/status-bar]
-     [toolbar.view/simple-toolbar (i18n/label :t/blocked-contacts)]
+     [toolbar.view/simple-toolbar (i18n/label :t/blocked-users)]
      [react/scroll-view {:style {:background-color colors/white
                                  :padding-vertical 8}}
       [list.views/flat-list
